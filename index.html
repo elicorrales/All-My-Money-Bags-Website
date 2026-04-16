@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All My Money Bags | Secure Multi-Chain Architecture</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="mermaid.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>All My Money Bags (AMMB)</h1>
+        <p class="tagline">A Standalone, Local-First Multi-Chain Crypto Ecosystem</p>
+        <p><em>Project Status: Private Source / Developed via AI Orchestration</em></p>
+    </header>
+
+    <section class="card">
+        <h2>Executive Summary</h2>
+        <p>AMMB is a high-security wallet architecture designed to eliminate supply-chain vulnerabilities. By enforcing a <strong>Zero-Third-Party</strong> model, the system operates entirely without CDNs or external runtimes, utilizing a hardened local environment on Linux.</p>
+    </section>
+
+    <section class="card">
+        <div class="icon-header">
+            <img src="desktop.icon.png" alt="AMMB Logo">
+            <h2>Interface & UX Design</h2>
+        </div>
+        <p>A look into the "Local-First" environment, showing the decoupled UI and secure transaction flow.</p>
+
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="starting.app.png" alt="App Launch">
+                <p>System Initialization</p>
+            </div>
+            <div class="gallery-item">
+                <img src="select.wallet.png" alt="Wallet Selection">
+                <p>Secure Wallet Management</p>
+            </div>
+            <div class="gallery-item">
+                <img src="dapp.1.png" alt="DApp Request">
+                <p>Isolated DApp Interaction</p>
+            </div>
+            <div class="gallery-item">
+                <img src="dapp.2.png" alt="Signing Flow">
+                <p>Transaction Review & Signing</p>
+            </div>
+            <div class="gallery-item full-width">
+                <img src="wallet-extension-dapp-pipeline.png" alt="Wallet Extension DApp Pipeline">
+                <p>Wallet-Extension-dApp Pipeline</p>
+            </div>
+            <div class="gallery-item full-width">
+                <img src="life-cycle-mgr-wallet-proxy-server.png" alt="Lifecycle Manager Wallet Proxy Server">
+                <p>Lifecycle Manager → Wallet → Proxy Server</p>
+            </div>
+            <div class="gallery-item">
+                <img src="asset.provider.statistics.jpg" alt="Asset Provider Stats">
+                <p>Asset Provider Statistics</p>
+            </div>
+            <div class="gallery-item">
+                <img src="wallet.proxy.networks.jpg" alt="Wallet to Proxy to Networks">
+                <p>Wallet To Proxy To Networks</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Architectural Workflow</h2>
+        <p>The system distinguishes between User-initiated actions and DApp-initiated requests, funneling both through a shared, hardened cryptographic core.</p>
+
+        <div class="mermaid">
+            graph TD
+                A[DApp Window] <-->|Serialized Bridge| B[Browser Extension]
+                B <-->|Message Routing| C[Real Wallet file://]
+                C -->|Signing/Auth| D[Local RPC Proxy]
+                D -->|Sanitized Request| E[Blockchain Network]
+        </div>
+
+        <div class="mermaid">
+            graph TD
+                subgraph "Input Layer"
+                    User[User-Initiated: Send/Receive]
+                    DApp[DApp-Initiated: Remote Request]
+                end
+
+                subgraph "UI Strategy"
+                    User --> ManualUI[Crypto-Agnostic UI Panels]
+                    DApp --> DAppUI[Request Monitoring & Approval UI]
+                end
+
+                subgraph "The Shared Core Engine"
+                    ManualUI --> AgnosticNet[Agnostic Network Layer]
+                    DAppUI --> AgnosticNet
+                    AgnosticNet --> CryptoNet[Crypto-Specific Network Layer]
+                    CryptoNet --> CryptoLib[Crypto-Specific Libs: Sign/Derive]
+                    CryptoLib --> ProxyClient[Agnostic Proxy Client]
+                end
+
+                ProxyClient --> ProxyServer[Local Node.js Proxy Server]
+                ProxyServer --> Blockchain[Blockchain Network]
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Security Pillars</h2>
+        <ul>
+            <li><strong>Process Isolation:</strong> The Real Wallet UI runs as a restricted <code>file://</code> resource, isolated from the DApp's DOM.</li>
+            <li><strong>Transient Handshake:</strong> A custom Node.js lifecycle manager spawns the environment with one-time cryptographic secrets for inter-process authentication.</li>
+            <li><strong>Hardened Proxy:</strong> A local Node.js RPC proxy sanitizes all outgoing blockchain communications and tracks provider reliability telemetry.</li>
+            <li><strong>Serialized Bridge:</strong> DApp requests are strictly serialized (1-at-a-time) through a Manifest V3 messaging bridge to prevent parallel execution attacks.</li>
+        </ul>
+    </section>
+
+    <section class="card">
+        <h2>Technical Capabilities</h2>
+        <p>Currently supporting 17+ protocols across EVM and Non-EVM chains:</p>
+        <ul>
+            <li><strong>EVM:</strong> Ethereum, BSC, Polygon (POL).</li>
+            <li><strong>Non-EVM:</strong> Bitcoin (BTC), Ripple (XRP), Stellar (XLM).</li>
+            <li><strong>Assets:</strong> Comprehensive support for ERC20 and BEP20 token standards.</li>
+        </ul>
+    </section>
+
+    <footer class="footer">
+        <section class="card">
+            <h2>Connect & Professional Background</h2>
+            <p>For a detailed overview of my technical expertise and project history, you can download my latest resume or reach out directly for a walkthrough of the AMMB architecture.</p>
+
+            <div class="cta-group">
+                <a href="https://github.com/elicorrales/AllMyMoneyBagsCryptoWallet/blob/main/README.md" class="cta-btn secondary" target="_blank">
+                    📄 GitHub Project Repository
+                </a>
+
+                <a href="https://youtube.com/playlist?list=PL8DQTC0IZtMt-gPWAXvIIGQtCPgY0pz-s&si=zpwm9-ly-qewLOKD" class="cta-btn secondary" target="_blank">
+                    📄 All My Money Bags Demo Videos (Youtube)
+                </a>
+
+                <a href="The.Latest.Resume.pdf" class="cta-btn secondary" target="_blank">
+                    📄 View Resume (PDF)
+                </a>
+
+                <button id="openAiModal" class="cta-btn secondary">
+                    🤖 AI Orchestration Story
+                </button>
+
+                <a href="mailto:e_corrales2003@yahoo.com" class="cta-btn">
+                    📧 Contact Me
+                </a>
+            </div>
+        </section>
+
+        <p style="margin-top: 40px;">&copy; 2026 AMMB Architecture | Local-First Security</p>
+    </footer>
+</div>
+
+<div id="imageModal" class="modal" onclick="this.style.display='none'">
+    <img class="modal-content" id="modalImg">
+</div>
+
+<!-- AI MODAL -->
+<div id="aiOrchestrationModal" class="ai-modal-overlay" onclick="this.style.display='none'">
+    <div class="ai-modal-container">
+
+        <div class="ai-modal-header">
+            <h2>The Architect’s Framework</h2>
+            <p class="tagline">How 40 years of structural wisdom directed the AI velocity.</p>
+        </div>
+
+        <div class="ai-grid">
+            <div class="ai-step">
+                <h3>Beyond "Vibe Coding"</h3>
+                <p>I quickly learned that casual prompting fails as complexity scales. I shifted to <strong>Context-First Engineering</strong>: providing precise snippets across all project layers (UI, Network, Lib) to maintain a perfect mental map of the system's state.</p>
+            </div>
+
+            <div class="ai-step">
+                <h3>The Meld-Filter Strategy</h3>
+                <p>No AI code entered the project unchecked. I utilized <strong>Meld</strong> for side-by-side file comparisons, ensuring every line proposed by the AI served the architecture, not just the immediate request.</p>
+            </div>
+
+            <div class="ai-step">
+                <h3>Atomic Refactoring</h3>
+                <p>To prevent "hallucination drift," I kept chat histories short and focused. I acted as the lead architect, enforcing directory separation by layer and feature, while constantly refactoring helper functions for long-term stability.</p>
+            </div>
+
+            <div class="ai-step">
+                <h3>The "Punt & Regroup" Safety Net</h3>
+                <p>Coding with AI requires obsessive version control. When a prompt led down a "rabbit trail," I used <strong>Git</strong> to instantly reset to the last stable commit and regroup with a fresh architectural perspective.</p>
+            </div>
+        </div>
+
+        <div class="toolchain-section">
+            <p class="toolchain-label">ENGINEERING TOOLCHAIN:</p>
+            <span class="toolchain-tag">Linux Terminal</span>
+            <span class="toolchain-tag">Vim</span>
+            <span class="toolchain-tag">Meld (Diff)</span>
+            <span class="toolchain-tag">Grep / Find</span>
+            <span class="toolchain-tag">Git</span>
+        </div>
+    </div>
+</div>
+
+<script src="index.js" defer></script>
+
+</body>
+</html>
